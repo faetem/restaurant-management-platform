@@ -1,4 +1,4 @@
-    # Plateforme de gestion d'un restaurant en ligne
+# Plateforme de gestion d'un restaurant en ligne
 
 Projet réalisé en groupe de 4 pour le projet final du cours de Vue.js dispensé à l'EFREI Paris Panthéon-Assas en L2.
 
