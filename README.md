@@ -1,38 +1,38 @@
-# .
+    # Plateforme de gestion d'un restaurant en ligne
 
-This template should help get you started developing with Vue 3 in Vite.
+Projet réalisé en groupe de 4 pour le projet final du cours de Vue.js dispensé à l'EFREI Paris Panthéon-Assas en L2.
 
-## Recommended IDE Setup
+## Répartition des tâches
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+**CHEN Pascal** :
+- Page d'accueil
 
-## Recommended Browser Setup
+**DE POUKN Samuel** :
+- Page du menu : 
+    - components de la barre de navigation (`AppHeader.vue`) et de chaque élément du menu (`DishCard.vue`)
+    - fonction de filtrage des éléments du menu (Entrée, Plat, Dessert, Boisson)
+ 
+**TEIXEIRA Paulo** :
+- Page des commandes (admin) : affichage des commandes passées et fonction pour changer leurs statuts
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+**TOURE Faetem** :
+- Page du panier : 
+    - ajout des éléments du menu au panier (toasts, persistance des données, calcul du total)
+    - gestion du panier (ajouter ou retirer des éléments)
 
-## Customize configuration
+## Concepts clés utilisés (selon le cahier des charges fourni)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
 
-## Project Setup
+## Comment lancer le projet ? 
+```sh
+git clone https://github.com/faetem/restaurant-management-platform.git
+```
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
