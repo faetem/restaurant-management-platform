@@ -19,6 +19,7 @@ Projet réalisé en groupe de 4 pour le projet final du cours de Vue.js dispens�
 - Page du panier : 
     - ajout des éléments du menu au panier (toasts, persistance des données, calcul du total)
     - gestion du panier (ajouter ou retirer des éléments)
+- Rédaction de la documentation
 
 ## Concepts clés utilisés (selon le cahier des charges fourni)
 
