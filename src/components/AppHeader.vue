@@ -6,6 +6,7 @@ const route = useRoute()
 
 const isHome = computed(() => route.name === 'home')
 const isMenu = computed(() => route.name === 'menu')
+const isOrders = computed(() => route.name === 'orders')
 </script>
 
 <template>
@@ -28,6 +29,14 @@ const isMenu = computed(() => route.name === 'menu')
         :class="{ 'app-header__link--active': isMenu }"
       >
         Menu
+      </RouterLink>
+      <span class="app-header__pipe" aria-hidden="true">|</span>
+      <RouterLink
+        class="app-header__link"
+        to="/admin/commandes"
+        :class="{ 'app-header__link--active': isOrders }"
+      >
+        Commandes
       </RouterLink>
     </nav>
   </header>
