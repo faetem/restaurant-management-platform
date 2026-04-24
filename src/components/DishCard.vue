@@ -6,6 +6,8 @@ defineProps({
     required: true,
   },
 })
+
+const emit = defineEmits(['add-to-cart'])
 </script>
 
 <template>
@@ -22,8 +24,13 @@ defineProps({
         </slot>
       </div>
       <p class="dish-card__price">{{ dish.price.toFixed(2) }} &euro;</p>
-      <!-- Bouton decoratif : aucun gestionnaire, aucune action -->
-      <button type="button" class="dish-card__btn">Ajouter au panier</button>
+      <button 
+      type="button" 
+      class="dish-card__btn" 
+      style="cursor: pointer;"
+      @click="emit('add-to-cart', dish)">
+    Ajouter au panier
+      </button>
     </div>
   </article>
 </template>

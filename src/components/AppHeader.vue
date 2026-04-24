@@ -7,6 +7,8 @@ const route = useRoute()
 const isHome = computed(() => route.name === 'home')
 const isMenu = computed(() => route.name === 'menu')
 const isOrders = computed(() => route.name === 'orders')
+const isCart = computed(() => route.name === 'cart')
+
 </script>
 
 <template>
@@ -37,6 +39,14 @@ const isOrders = computed(() => route.name === 'orders')
         :class="{ 'app-header__link--active': isOrders }"
       >
         Commandes
+      </RouterLink>
+      <span class="app-header__pipe" aria-hidden="true">|</span>
+      <RouterLink
+        class="app-header__link"
+        to="/panier"
+        :class="{ 'app-header__link--active': isCart }"
+      >
+        Panier
       </RouterLink>
     </nav>
   </header>
