@@ -1,36 +1,7 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, inject } from 'vue'
 
-const orders = ref([
-  {
-    id: 'cmd-1001',
-    customerName: 'Sophie Martin',
-    status: 'En attente',
-    items: [
-      { name: 'Burger Le Gourmet', quantity: 2, unitPrice: 16.5 },
-      { name: 'Limonade maison 50cL', quantity: 2, unitPrice: 4.5 },
-    ],
-  },
-  {
-    id: 'cmd-1002',
-    customerName: 'Karim Benali',
-    status: 'En attente',
-    items: [
-      { name: 'Velouté de courge', quantity: 1, unitPrice: 7.5 },
-      { name: 'Filet de saumon', quantity: 1, unitPrice: 19 },
-      { name: 'Fondant au chocolat', quantity: 2, unitPrice: 8.5 },
-    ],
-  },
-  {
-    id: 'cmd-1003',
-    customerName: 'Emma Leroy',
-    status: 'Prête',
-    items: [
-      { name: 'Salade de chèvre chaud', quantity: 1, unitPrice: 9 },
-      { name: 'Pâtes al ragù', quantity: 1, unitPrice: 14.5 },
-    ],
-  },
-])
+const orders = inject('orders')
 
 const totalAmount = (order) =>
   order.items.reduce((total, item) => total + item.quantity * item.unitPrice, 0)
