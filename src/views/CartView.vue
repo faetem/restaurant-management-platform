@@ -2,12 +2,29 @@
 import { inject, ref, watch } from 'vue'
 
 const cart = inject('cart')
+const customerName = inject('customerName')
 const { removeFromCart, updateQuantity } = inject('cartActions')
+const { addOrderFromCart } = inject('orderActions')
 const total = ref(0)
+const submitMessage = ref('')
 
 watch(cart, (newCart) => {
   total.value = newCart.reduce((acc, item) => acc + (item.price * item.quantity), 0)
 }, { deep: true, immediate: true })
+
+const finalizeOrder = () => {
+  const created = addOrderFromCart()
+
+  submitMessage.value = created
+    ? 'Commande ajoutée dans la page commandes.'
+    : 'Ajoute un nom et au moins un plat avant de finaliser.'
+
+  if (created) {
+    setTimeout(() => {
+      submitMessage.value = ''
+    }, 2500)
+  }
+}
 </script>
 
 <template>
@@ -20,6 +37,17 @@ watch(cart, (newCart) => {
     </div>
 
     <div v-else class="cart-container">
+      <section class="cart-customer">
+        <label for="customer-name">Nom du client</label>
+        <input
+          id="customer-name"
+          v-model="customerName"
+          type="text"
+          placeholder="Ex. Sophie Martin"
+          autocomplete="name"
+        >
+      </section>
+
       <section class="cart-items">
         <article v-for="item in cart" :key="item.id" class="cart-item">
           <img :src="item.image" :alt="item.name" class="cart-item__img">
@@ -41,7 +69,8 @@ watch(cart, (newCart) => {
           <span>Total :</span>
           <strong>{{ total.toFixed(2) }} €</strong>
         </div>
-        <button class="btn-order">Finaliser la commande</button>
+        <button class="btn-order" @click="finalizeOrder">Finaliser la commande</button>
+        <p v-if="submitMessage" class="cart-summary__message">{{ submitMessage }}</p>
          <div class="btn-back-menu">
             <router-link to="/menu" class="btn-primary">Retour au menu</router-link>
          </div>
@@ -55,6 +84,31 @@ watch(cart, (newCart) => {
     max-width: 800px; 
     margin: 2rem auto; 
     padding: 0 1rem; 
+}
+
+.cart-customer {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0 0 1rem;
+}
+
+.cart-customer label {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cart-customer input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  background: #fff;
+}
+
+.cart-customer input:focus {
+  outline: 2px solid #bbf7d0;
+  border-color: #16a34a;
 }
 
 .cart-item { 
@@ -114,6 +168,12 @@ watch(cart, (newCart) => {
     border-radius: 8px; 
     font-weight: bold; 
     cursor: pointer; 
+}
+
+.cart-summary__message {
+  margin: 0.75rem 0 0;
+  color: #166534;
+  font-weight: 600;
 }
 
 .btn-delete { 
